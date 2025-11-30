@@ -69,7 +69,16 @@ This project demonstrates a minimal Python client for interacting with the rever
 **The is a sample success message**
 
 ```json
-
+{
+  "accepted": [
+    {
+      "bet_request_id": "2598967605851201569-1--1",
+      "bet_id": "2606902585277420123",
+      "bonus_id": null
+    }
+  ],
+  "error": []
+}
 ```
 
 **Example of failed response:**
