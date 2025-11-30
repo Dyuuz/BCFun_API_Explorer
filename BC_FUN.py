@@ -139,8 +139,7 @@ if __name__ == "__main__":
     
     # place bet API
     client.bet_endpoint = (
-            "https://api-k-c7818b61-623.sptpub.com/api/v2/coupon/brand/"
-            "2103509236163162112/bet/place"
+            "https://api-k-c7818b61-623.sptpub.com/api/v2/coupon/brand/2103509236163162112/bet/place"
         )
 
     # payload - bet data argument for subsequent request
