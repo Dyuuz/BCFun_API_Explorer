@@ -50,6 +50,27 @@ This project demonstrates a minimal Python client for interacting with the rever
   ]
 }
 ```
+## Example header:
+**The is a sample header used for placing a bet via the BCFUN API:**
+
+```json
+{
+    "Content-Type": "application/json",
+    "Authorization": "Bearer Token",
+    "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Mobile Safari/537.36",
+    "Accept": "*/*",
+    "Origin": "https://bc.fun",
+    "Referer": "https://bc.fun/"
+}
+```
+
+## Example Reseponse:
+**The is a sample success message**
+
+```json
+
+```
 
 **Example of failed response:**
 ```json
