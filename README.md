@@ -52,7 +52,7 @@ This project demonstrates a minimal Python client for interacting with the rever
 ```
 
 **Example of failed response:**
-```
+```json
  {
   "accepted": [],
   "error": [
@@ -68,7 +68,7 @@ This project demonstrates a minimal Python client for interacting with the rever
 }
 ```
 
-```
+```json
 {
   "error": "expired_token",
   "error_description": "Token expired."
