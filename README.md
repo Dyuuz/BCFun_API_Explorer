@@ -13,29 +13,45 @@ This project demonstrates a minimal Python client for interacting with the rever
 - **Request:** JSON payload containing bet details and selections, including timestamps in milliseconds for server synchronization.  
 - **Response:** JSON object from the API indicating success, failure, or errors such as insufficient funds, expired_token etc
 
-**Example payload:**
+## Example payload:
+**The is a sample payload used for placing a bet via the BCFUN API:**
+
 ```json
-[
-  {
-    "type": "1/1",
-    "sum": "150",
-    "k": "1.25",
-    "bet_request_id": "2598967605851201569-1--1",
-    "odds_change": "any",
-    "selections": [
-      {
-        "event_id": "2598967605851201569",
-        "market_id": "1",
-        "outcome_id": "1",
-        "k": "1.25",
-        "timestamp": 1764490156935
-      }
-    ]
-  }
-]
+{
+  "type": "1/1",
+  "sum": "150",
+  "k": "1.25",
+  "global_id": null,
+  "bonus_id": null,
+  "bet_request_id": "2598967605851201569-1--1",
+  "odds_change": "any",
+  "selections": [
+    {
+      "event_id": "2598967605851201569",
+      "market_id": "1",
+      "outcome_id": "1",
+      "k": "1.25",
+      "specifiers": "",
+      "source": {
+        "layout": "tile",
+        "page": "/",
+        "section": "Top",
+        "extra": {
+          "market": "Event Plate",
+          "timeFilter": "",
+          "banner_type": "BetbyAI",
+          "tab": "1"
+        }
+      },
+      "promo_id": null,
+      "bonus_id": null,
+      "timestamp": 1764490156935
+    }
+  ]
+}
 ```
 
-**Example response:**
+**Example of failed response:**
 ```
  {
   "accepted": [],
@@ -49,5 +65,12 @@ This project demonstrates a minimal Python client for interacting with the rever
       "vip_request_available": null
     }
   ]
+}
+```
+
+```
+{
+  "error": "expired_token",
+  "error_description": "Token expired."
 }
 ```
