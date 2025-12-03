@@ -38,7 +38,7 @@ class BCFUNClient:
         Supported markets:
           - 1x2 → specifier = ""
           - totals → specifier = "total=X"
-          - handicap → specifier = "handicap=X"
+          - handicap → specifier = "hcp=X"
         """
         market = bet_data["market_type"].lower()
 
@@ -56,7 +56,7 @@ class BCFUNClient:
     
     def build_request_id(self, bet_data: dict, specifier=None) -> str:
         """
-        Returns the request_id depending on the market type.
+        Returns the bet_request_id depending on the market type.
         Supported markets:
           - 1x2 = "event_id-1--1"
           - total = "event_id-18-total=1.5-12"
