@@ -128,7 +128,16 @@ This project demonstrates a minimal Python client for interacting with the rever
 
 **The is a sample success message for total bet**
 ```json
-
+{
+  "accepted": [
+    {
+      "bet_request_id": "2604063478348128301-18-total=1.5-12",
+      "bet_id": "2607900395879674442",
+      "bonus_id": null
+    }
+  ],
+  "error": []
+}
 ```
 
 **The is a sample success message for handicap bet**
@@ -166,6 +175,13 @@ This project demonstrates a minimal Python client for interacting with the rever
 {
   "error": "expired_token",
   "error_description": "Token expired."
+}
+```
+
+```json
+{
+  "error": "invalid_token",
+  "error_description": "Illegal base64 character 20"
 }
 ```
 
