@@ -33,6 +33,7 @@ class BCFUNClient:
         
     def build_specifier(self, bet_data: dict) -> str:
         """
+        Value must be supplied as bet_data["x"] e.g total, handicap
         Returns the specifier depending on the market type.
         Supported markets:
           - 1x2 → specifier = ""
@@ -45,11 +46,9 @@ class BCFUNClient:
             return ""
 
         if market == "total":
-            # total value must be supplied as bet_data["total"]
             return f"total={bet_data['total']}"
 
         if market == "hcp":
-            # handicap must be supplied as bet_data["handicap"]
             return f"hcp={bet_data['handicap']}"
 
         raise ValueError(f"Unsupported market type: {market}")

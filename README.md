@@ -88,7 +88,7 @@ This project demonstrates a minimal Python client for interacting with the rever
     "handicap": "-3.25",
     "event_id": "2604063478348128301",
     "market_id": "16",
-    "outcome_id": "1714",
+    "outcome_id": "1715",
     "stake_amount": "150000",
     "odds": "7.0",
     "bet_type_specifier": "1/1"
@@ -111,7 +111,7 @@ This project demonstrates a minimal Python client for interacting with the rever
 ```
 
 ## Example Response:
-**The is a sample success message**
+**The is a sample success message for 1x2 bet**
 
 ```json
 {
@@ -121,6 +121,25 @@ This project demonstrates a minimal Python client for interacting with the rever
       "bet_id": "2606902585277420123",
       "bonus_id": null
     }
+  ],
+  "error": []
+}
+```
+
+**The is a sample success message for total bet**
+```json
+
+```
+
+**The is a sample success message for handicap bet**
+```json
+{
+  "accepted": [
+      {
+          "bet_request_id": "2604063478348128301-16-hcp=-3.25-1715",
+          "bet_id": "2607894871545090778",
+          "bonus_id": null
+      }
   ],
   "error": []
 }
