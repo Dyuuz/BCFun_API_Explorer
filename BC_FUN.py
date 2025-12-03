@@ -29,29 +29,78 @@ class BCFUNClient:
         """
         self.headers = headers
         self.session.headers.update(headers)
+        
+        
+    def build_specifier(self, bet_data: dict) -> str:
+        """
+        Returns the specifier depending on the market type.
+        Supported markets:
+          - 1x2 → specifier = ""
+          - totals → specifier = "total=X"
+          - handicap → specifier = "handicap=X"
+        """
+        market = bet_data["market_type"].lower()
 
+        if market == "1x2":
+            return ""
 
+        if market == "total":
+            # total value must be supplied as bet_data["total"]
+            return f"total={bet_data['total']}"
+
+        if market == "hcp":
+            # handicap must be supplied as bet_data["handicap"]
+            return f"hcp={bet_data['handicap']}"
+
+        raise ValueError(f"Unsupported market type: {market}")
+    
+    
+    def build_request_id(self, bet_data: dict, specifier=None) -> str:
+        """
+        Returns the request_id depending on the market type.
+        Supported markets:
+          - 1x2 → specifier = "event_id-1--1"
+          - total → specifier = "event_id-18-total=1.5-12"
+          - handicap → specifier = "event_id-16-hcp=-3.25-1714"
+        """
+        market = bet_data["market_type"].lower()
+
+        if market == "1x2":
+            return f"{bet_data['event_id']}-1--1"
+
+        if market == "total":
+            return f"{bet_data['event_id']}-{bet_data['market_id']}-{specifier}-{bet_data['outcome_id']}"
+
+        if market == "hcp":
+            return f"{bet_data['event_id']}-{bet_data['market_id']}-{specifier}-{bet_data['outcome_id']}"
+
+        raise ValueError(f"Unsupported market type: {market}")
+    
+    
     def build_bet_payload(self, bet_data: dict) -> list:
         """
         This will build the bet payload using dynamic data for subsequent request
-        e.g event_id, market_id, outcome_id, stake_amount, odds, bet_type_specifier
+        e.g event_id, market_id, outcome_id, stake_amount, odds, bet_type_specifier,
+        specifier, bet_request_id
         
         TIme library is used to generate the current time in milliseconds to validate 
         every request as recent and to make it sync with server-side event timing.
         """
-        
+        specifier = self.build_specifier(bet_data)
+        bet_request_id = self.build_request_id(bet_data, specifier)
+
         selection = {
             "event_id": bet_data["event_id"],
             "market_id": bet_data["market_id"],
             "outcome_id": bet_data["outcome_id"],
             "k": bet_data["odds"],
-            "specifiers": "",
+            "specifiers": specifier,
             "source": {
                 "layout": "tile",
-                "page": "/",
-                "section": "Top",
+                "page": "/:sportSlug/:categorySlug/:tournamentSlug/:eventSlugAndId",
+                "section": "",
                 "extra": {
-                    "market": "Event Plate",
+                    "market": "Main",
                     "timeFilter": "",
                     "banner_type": "BetbyAI",
                     "tab": "1"
@@ -69,7 +118,7 @@ class BCFUNClient:
                 "k": bet_data["odds"],
                 "global_id": None,
                 "bonus_id": None,
-                "bet_request_id": f"{bet_data['event_id']}-1--1",
+                "bet_request_id": bet_request_id,
                 "odds_change": "any",
                 "selections": [selection]
             }
@@ -142,13 +191,15 @@ if __name__ == "__main__":
             "https://api-k-c7818b61-623.sptpub.com/api/v2/coupon/brand/2103509236163162112/bet/place"
         )
 
-    # payload - bet data argument for subsequent request
-    bet_data = {
-        "event_id": "2598967605851201569",
-        "market_id": "1",
-        "outcome_id": "1",
-        "stake_amount": "150",
-        "odds": "1.25",
+    # payload(hcp) - place_bet argument for subsequent request
+    bet_data =  {
+        "market_type": "hcp",
+        "handicap": "-3.25",
+        "event_id": "2604063478348128301",
+        "market_id": "16",
+        "outcome_id": "1714",
+        "stake_amount": "150000",
+        "odds": "7.0",
         "bet_type_specifier": "1/1"
     }
 

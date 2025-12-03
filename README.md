@@ -14,7 +14,7 @@ This project demonstrates a minimal Python client for interacting with the rever
 - **Response:** JSON object from the API indicating success, failure, or errors such as insufficient funds, expired_token etc
 
 ## Example payload:
-**The is a sample payload used for placing a bet via the BCFUN API:**
+**The is a sample full payload used for placing a bet via the BCFUN API:**
 
 ```json
 {
@@ -50,6 +50,51 @@ This project demonstrates a minimal Python client for interacting with the rever
   ]
 }
 ```
+## Example payload for place_bet function:
+**The is a sample payload for placing 1x2 bet**
+
+```json
+{
+    "market_type": "1x2",
+    "event_id": "2604063478348128301",
+    "market_id": "1",
+    "outcome_id": "1",
+    "stake_amount": "150000",
+    "odds": "3.25",
+    "bet_type_specifier": "1/1"
+}
+```
+
+**The is a sample payload for placing total bet**
+
+```json
+{
+    "market_type": "total",
+    "total": "1.5",
+    "event_id": "2604063478348128301",
+    "market_id": "18",
+    "outcome_id": "12",
+    "stake_amount": "150000",
+    "odds": "3.25",
+    "bet_type_specifier": "1/1"
+}
+```
+
+**The is a sample payload for placing handicap bet**
+
+```json
+{
+    "market_type": "hcp",
+    "handicap": "-3.25",
+    "event_id": "2604063478348128301",
+    "market_id": "16",
+    "outcome_id": "1714",
+    "stake_amount": "150000",
+    "odds": "7.0",
+    "bet_type_specifier": "1/1"
+}
+```
+
 ## Example header:
 **The is a sample header used for placing a bet via the BCFUN API:**
 
@@ -65,7 +110,7 @@ This project demonstrates a minimal Python client for interacting with the rever
 }
 ```
 
-## Example Reseponse:
+## Example Response:
 **The is a sample success message**
 
 ```json
