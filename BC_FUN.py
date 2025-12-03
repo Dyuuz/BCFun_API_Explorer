@@ -58,9 +58,9 @@ class BCFUNClient:
         """
         Returns the request_id depending on the market type.
         Supported markets:
-          - 1x2 → specifier = "event_id-1--1"
-          - total → specifier = "event_id-18-total=1.5-12"
-          - handicap → specifier = "event_id-16-hcp=-3.25-1714"
+          - 1x2 = "event_id-1--1"
+          - total = "event_id-18-total=1.5-12"
+          - handicap = "event_id-16-hcp=-3.25-1714"
         """
         market = bet_data["market_type"].lower()
 
