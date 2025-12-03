@@ -149,3 +149,21 @@ This project demonstrates a minimal Python client for interacting with the rever
   "error_description": "Token expired."
 }
 ```
+
+## How to Run
+
+1. Install **Python 3.10+**.
+
+2. Clone the repository:
+
+```bash
+git clone https://github.com/Dyuuz/BCFun_API_Explorer.git
+```
+
+3. Open `BC_FUN.py` and update the authorization token in `set_headers`.
+
+4. Run the script:
+
+```bash
+python BC_FUN.py
+```
