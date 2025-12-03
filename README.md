@@ -13,6 +13,21 @@ This project demonstrates a minimal Python client for interacting with the rever
 - **Request:** JSON payload containing bet details and selections, including timestamps in milliseconds for server synchronization, event_id, market_id, outcome_id, stake_amount, odds, bet_type_specifier.
 - **Response:** JSON object from the API indicating success, failure, or errors such as insufficient funds, expired_token etc
 
+## Example header:
+**The is a sample header used for placing a bet via the BCFUN API:**
+
+```json
+{
+    "Content-Type": "application/json",
+    "Authorization": "Bearer Token",
+    "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Mobile Safari/537.36",
+    "Accept": "*/*",
+    "Origin": "https://bc.fun",
+    "Referer": "https://bc.fun/"
+}
+```
+
 ## Example payload:
 **The is a sample full payload used for placing a bet via the BCFUN API:**
 
@@ -92,21 +107,6 @@ This project demonstrates a minimal Python client for interacting with the rever
     "stake_amount": "150000",
     "odds": "7.0",
     "bet_type_specifier": "1/1"
-}
-```
-
-## Example header:
-**The is a sample header used for placing a bet via the BCFUN API:**
-
-```json
-{
-    "Content-Type": "application/json",
-    "Authorization": "Bearer Token",
-    "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Mobile Safari/537.36",
-    "Accept": "*/*",
-    "Origin": "https://bc.fun",
-    "Referer": "https://bc.fun/"
 }
 ```
 
